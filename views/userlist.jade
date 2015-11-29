@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+  head
+    title Login Form
+    link(rel='stylesheet', href='/public/css/bootstrap.css')
+    link(rel='stylesheet', href='/public/css/style1.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script(src='/public/js/bootstrap.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/public/js/socketConnection.js')
+    script(src='/public/js/createtab.js')
+  body
+    .container
+      H1 #{username}
+      input(type="hidden" name="target" value="#{email}" id="userId")
+      input(type="hidden" name="target" value="#{username}" id="username")
+      input(type="hidden" name="target" value="#{_id}" id="_id")
+      div.col-sm-12
+        #logour <a href='/logout'> LOGOUT </a>
+      .col-sm-4
+        div
+          b
+            | # of Online Users: 
+            span#totalonline
+        ul#onlineUser.list-group
+      .col-sm-7(style='border:1px solid black;')
+        div
+          div#msgs(style='width:100%;float:left;height:220px;overflow: scroll;')
+            ul#messages(style='padding-bottom:40px')
+        div
+          form(action='' id="msgForm")
+            input#message.form-control(autocomplete='off', placeholder='Type message')
+            button Send
+      div.col-sm-12#chat_tabs(style='position:fixed;bottom:0px;')

@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+  head
+    title Login Form
+    link(rel='stylesheet', href='/public/css/bootstrap.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script(src='/public/js/bootstrap.js')
+    link(rel='stylesheet', href='/public/css/style1.css')
+  body
+    .container
+      .row.jumbotron.text-center
+        .row.text-center
+          h1 Welcome to ChatWeb
+        .row
+          p Enter details to login
+          .row
+            .col-sm-3
+            .col-sm-6
+              form.form-horizontal(action='/login', method='POST', role='form')
+                .form-group
+                  label.col-sm-2.control-label(for='inputEmail3') Email:
+                  .col-sm-10
+                    input#inputEmail3.form-control(type='email', name='username', placeholder='Email')
+                .form-group
+                  label.col-sm-2.control-label(for='inputPassword3') Password:
+                  .col-sm-10
+                    input#inputPassword3.form-control(type='password', placeholder='Password', name='password')
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    .checkbox
+                      label
+                        input(type='checkbox')
+                        |  Remember me
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    button.btn.btn-default(type='submit') Sign in
+            .col-sm-3

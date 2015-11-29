@@ -1,0 +1,24 @@
+{
+  "name": "hapinode",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "good": "^6.4.0",
+    "good-console": "^5.2.0",
+    "handlebars": "^4.0.4",
+    "hapi": "^8.0.0",
+    "inert": "^3.2.0",
+    "insert": "^1.0.1",
+    "jade": "^1.11.0",
+    "mongoose": "^4.2.6",
+    "socket.io": "git://github.com/automattic/socket.io#master",
+    "yar": "^4.0.0"
+  }
+}

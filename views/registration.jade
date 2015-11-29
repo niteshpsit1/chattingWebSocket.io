@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+  head
+    title Register
+    link(rel='stylesheet', href='/public/css/bootstrap.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script(src='/public/js/bootstrap.js')
+  body
+    .container
+      .row.jumbotron.text-center
+        .panel-group
+          .panel.panel-primary
+            .panel-heading
+              h1 Registration
+            .panel-body
+              form.form-horizontal(method='POST', action='/registration', role='form')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') User Name
+                  .col-sm-10
+                    input#inputName.form-control(type='text', placeholder='Enter Your Name', name='username')
+                .form-group
+                  label.col-sm-2.control-label(for='inputEmail') Email
+                  .col-sm-10
+                    input#inputEmail.form-control(type='email', placeholder='Email', name='email')
+                .form-group
+                  label.col-sm-2.control-label(for='inputPassword') Password
+                  .col-sm-10
+                    input#inputPassword.form-control(type='password', placeholder='Password', name='password')
+                .form-group
+                  label.col-sm-2.control-label(for='inputConfirmPassword') Confirm-Password
+                  .col-sm-10
+                    input#inputConfirmPassword.form-control(type='password', placeholder='Confirm Password', name='passwordconfirm')
+                .form-group
+                  label.col-sm-2.control-label(for='inputName') Country
+                  .col-sm-10
+                    input#inputName.form-control(type='text', placeholder='Enter country', name='country')
+                .form-group
+                  label.col-sm-2.control-label(for='Gender') Gender
+                  .col-sm-10
+                    .radio.list-inline(align='left')
+                      label
+                        input(type='radio', name='gender', value='male')
+                        | Male
+                      label
+                        input(type='radio', name='gender', value='female')
+                        | Female
+                .form-group
+                  .col-sm-10
+                    .checkbox
+                      label
+                        input(type='checkbox')
+                        |  Remember me
+                .form-group
+                  .col-sm-10
+                    button.btn.btn-primary(type='submit') Register

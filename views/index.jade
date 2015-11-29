@@ -1,0 +1,53 @@
+html
+  head
+    title Chat application with Node and Sockets
+    script(src='/socket.io/socket.io.js')
+    script(src='http://code.jquery.com/jquery-1.10.2.js')
+    script.
+      var name,
+      socket = io.connect("http://localhost:3000");
+      $(function () {
+      //as the user to enter their nick name or name.
+      name = window.prompt("enter your name");
+      //If the name is not given, ask the user to enter once again
+      socket.emit('user join',{name:name});
+      if (name == null) {
+      $("body").html(" please refresh the page and try again ");
+      }
+      //When send button is clicked on, send the message to server
+      $("#send").click(function () {
+      //send to the server with person name and message
+      socket.emit("clientMsg", {
+      "name": name,
+      "msg": $("#msg").val()
+      });
+      $("#msg").val('');
+      });
+      //After sending message to the server, we'll have to wire up the event for it.
+      //We can do the following. Upon recievin the message print it to the message box
+      //that we've created in our html
+      socket.on("serverMsg", function (data) {
+      //Append the message from the server to the message box
+      $("#msgBox").append("<strong>" + data.name + "</strong>: " + data.msg + "<br/>");
+      });
+      $("#msg").on("keyup", function (event) {
+      socket.emit("sender", {
+      name: name
+      });
+      });
+      socket.on("sender", function (data) {
+      $("#status").html(data.name + " is typing");
+      setTimeout(function () {
+      $("#status").html('');
+      }, 3000);
+      });
+      });
+  body
+    // Message box: To show the sent/recieved messages
+    #msgBox(style='height: 200px; width: 400px; border: 1px solid blue;')
+    // Textbox: to enter the message text
+    input#msg(type='text', style='width:300px')
+    // Send: A button to send the message to others
+    input#send(type='submit', value='send')
+    br
+    #status
